@@ -1,6 +1,6 @@
 #!/bin/bash
 
-exec=./a.out
+exec=./ca.out
 
 ucc=1
 hcoll=0

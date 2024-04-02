@@ -9,10 +9,14 @@ NVFTN_REL_FLAGS=-DNDEBUG -O3 -gopt -fast -mp=gpu -Minfo=all -gpu=$(TGT_ARCH),ptx
 FLAGS=$(NVFTN_REL_FLAGS)
 
 FC=mpif90
+CC=mpicc
 
-a.out: main.F90
+fa.out: main.F90
 	$(FC) $(DEFS) $(FLAGS) -o $@ $^
+
+ca.out: main.c
+	$(CC) $(DEFS) $(FLAGS) -o $@ $^
 
 .PHONY: clean
 clean:
-	rm -f simple *.mod *.o
+	rm -f fa.out ca.out *.mod *.o
