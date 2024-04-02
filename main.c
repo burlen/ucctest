@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
   ierr = MPI_Alltoall(sbuf, cnt, MPI_FLOAT, rbuf, cnt, MPI_FLOAT, MPI_COMM_WORLD);
   }
 
-  #pragma omp target update from(rbuf)
+  #pragma omp target update from(rbuf[0:tot])
   for (i = 0; i < tot; ++i)
     printf("%g, ", rbuf[i]);
   printf("\n");
